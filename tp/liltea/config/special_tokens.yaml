@@ -1,0 +1,30 @@
+string_literal_open: '>'
+string_literal_close: '<'
+list_literal_open: '['
+list_literal_close: ']'
+list_literal_delimter: ','
+char_literal_open: '`'
+conditional_loop_open: '{'
+array_loop_open: '('
+n_times_loop_open: '\'
+block_close: '}'
+single_if: '?'
+multi_if: '!'
+single_else: ':'
+multi_else: ';'
+prevent_pop_flag: ×
+reverse_stack_flag: Ø
+greedy_flag: Œ
+variables:
+  - setter: a
+    getter: A
+  - setter: b
+    getter: B
+  - setter: c
+    getter: C
+  - setter: d
+    getter: D
+  - setter: e
+    getter: E
+  - setter: f
+    getter: F

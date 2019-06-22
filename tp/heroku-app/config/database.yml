@@ -1,0 +1,8 @@
+development:
+  adapter: postgresql
+  encoding: utf8
+  database: tp_development
+  host: 127.0.0.1
+  pool: 5
+  username: pguser
+  password: 1234

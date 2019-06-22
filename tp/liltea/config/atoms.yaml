@@ -1,0 +1,177 @@
+- lil: +
+  big: plus
+  js: add
+  description: Pops the top 2 values and pushes their sum
+- lil: '-'
+  big: minus
+  js: subtraction
+  description: Pops the top 2 values and pushes their difference
+- lil: '*'
+  big: mult
+  js: subtraction
+  description: Pops the top 2 values and pushes their product
+- lil: /
+  big: div
+  js: divide
+  description: Pops the top 2 values and pushes their quotient
+- lil: '%'
+  big: mod
+  js: modulo
+  description: Pops the top 2 values and pushes their their remainder after division
+- lil: $
+  big: index
+  js: at
+  description: Pushes the current iteration index
+- lil: null
+  big: ascsort
+  js: ascendingSort
+  lil_generated: ¡
+  description: Sorts the top array in ascending order
+- lil: null
+  big: dscsort
+  js: descendingSort
+  lil_generated: ¢
+  description: Sorts the top array in descending order
+- lil: null
+  big: square
+  js: square
+  lil_generated: £
+  description: Pops the top value and pushes it's square
+- lil: null
+  big: sqrt
+  js: sqrt
+  lil_generated: ¤
+  description: Pops the top value and pushes it's square
+- lil: null
+  big: dup
+  js: dup
+  lil_generated: ¥
+  description: Pushes the top value
+- lil: null
+  big: tan
+  js: tan
+  lil_generated: ¦
+  description: Pops the top value and pushes it's tan
+- lil: null
+  big: sin
+  js: sin
+  lil_generated: ©
+  description: Pops the top value and pushes it's sin
+- lil: null
+  big: cos
+  js: cos
+  lil_generated: ¬
+  description: Pops the top value and pushes it's cos
+- lil: null
+  big: empty
+  js: empty
+  lil_generated: ®
+  description: Pops everything
+- lil: null
+  big: lenght
+  js: stackLenght
+  lil_generated: µ
+  description: Pushes the length of the stack
+- lil: null
+  big: element
+  js: element
+  lil_generated: ½
+  description: Pops the top value and pushes the element of the top array at that index
+- lil: m
+  big: elementPop
+  js: elementPop
+  description: Pops the top value and the top array and pushes the element at that index
+- lil: =
+  big: compare
+  js: compare
+  description: Pops the top 2 values and pushes their equality
+- lil: p
+  big: print
+  js: print
+  description: Print the top value
+- lil: P
+  big: printPop
+  js: printPop
+  description: Pop the top value and print it
+- lil: .
+  big: increment
+  js: increment
+  description: Increment the top value with 1
+- lil: _
+  big: decrement
+  js: decrement
+  description: Decrement the top value with 1
+- lil: null
+  big: toString
+  js: toString
+  description: Converts a to string
+  lil_generated: ¿
+- lil: null
+  big: toInteger
+  js: toInteger
+  description: Converts a to number
+  lil_generated: €
+- lil: null
+  big: toArray
+  js: toArray
+  description: Converts a to array
+  lil_generated: Æ
+- lil: null
+  big: fact
+  js: fact
+  description: Pops a and pushes its factoriel
+  lil_generated: Ç
+- lil: null
+  big: ceil
+  js: ceil
+  description: Ceils a
+  lil_generated: Ð
+- lil: null
+  big: floor
+  js: floor
+  description: Floors a
+  lil_generated: Ñ
+- lil: 'g'
+  big: bigger
+  js: bigger
+  description: Checks if the last element is bigger than the previous one
+- lil: 'l'
+  big: less
+  js: less
+  description: Checks if the last element is less than the previous one
+- lil: '&'
+  big: AND
+  js: bitswiseAnd
+  description: Push the bitwise AND comparisment of the last two elements
+- lil: '|'
+  big: OR
+  js: bitswiseOr
+  description: Push the bitwise OR comparisment of the last two elements
+- lil: 'x'
+  big: XOR
+  js: bitswiseXor
+  description: Push the bitwise XOR comparisment of the last two elements
+- lil: 'n'
+  big: NOT
+  js: notEqual
+  description: Pops the top 2 values and pushes 1 if they are not equal and 0 if they are equal
+- lil: '^'
+  big: pop 
+  js: pop
+  description: Pops the value depending on the modificator
+- lil: 'O'
+  big: doubeDup
+  js: doubleDup
+  description: Duplicate the last two values
+- lil: 's'
+  big: swap
+  js: swap
+  description: Swap the top 2 values
+- lil: 't'
+  big: printStack
+  js: debugPrintStack
+  description: prints the stack (debugging)
+- lil: '~'
+  big: NOP
+  js: NOP
+  description: Does nothing.

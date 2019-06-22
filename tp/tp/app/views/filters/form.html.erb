@@ -1,0 +1,9 @@
+
+<h1>OR upload a text file:<h1>
+<%= form_tag({action: :calc }, multipart: true) do %>
+    <%= file_field_tag 'file' %>
+        <%= submit_tag("Upload") %>
+            <% end %>
+
+<%= link_to 'Back', text_files_path %>
+    

@@ -1,0 +1,18 @@
+Install bootstrap
+include it in application.scss
+navbar
+glyphicons
+footer
+
+Article.create(title: "Title", body: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.", picture: "https://s3.amazonaws.com/fllcasts/content_pictures/pictures/000/001/514/3d28ced2cff77cb3556159b4eed661b9510212a2Lego-Mindstorms-Motorcycle-Chopper-Robot-Ev3-2-Fllcasts.png?1521639145")
+
+
+Layout on index
+
+Layout on show pd-2
+
+buttons// sizes
+
+modal js
+
+TODO: Make a form and commit it ot SE

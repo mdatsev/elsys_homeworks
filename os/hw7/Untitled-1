@@ -1,0 +1,109 @@
+#include <unistd.h>
+#include <stdio.h>
+#include <sys/wait.h>
+#include <stdlib.h>
+#include <string.h>
+
+char **split(const char *string, const char *delim)
+{
+    char *mutable = malloc(strlen(string) * sizeof(char));
+    strcpy(mutable, string);
+    char **result = NULL;
+    char *ptr = strtok(mutable, delim);
+    int argc = 0;
+
+    while (ptr)
+    {
+        argc++;
+        result = realloc(result, (argc + 1) * sizeof(char *));
+
+        result[argc - 1] = ptr;
+
+        ptr = strtok(NULL, delim);
+    }
+
+    result[argc] = NULL;
+
+    return result;
+}
+
+char **parse_cmdline(const char *cmdline)
+{
+    return split(cmdline, " ");
+}
+
+char **parse_pipes(const char *cmdline)
+{
+    return split(cmdline, "|");
+}
+
+int main(int argc, char **argv)
+{
+    char *line = NULL;
+    size_t len = 0;
+    ssize_t read = 0;
+    while (1)
+    {
+        printf("$ ");
+        read = getline(&line, &len, stdin);
+        if (feof(stdin))
+        {
+            free(line);
+            break;
+        }
+        line[read - 1] = '\0';
+        char **commands = parse_pipes(line);
+        int pipefds[2];
+        for (int i = 0;; i++)
+        {
+            int last_cmd_out = pipefds[1];
+            if (commands[i] != NULL)
+            {
+                dup2(pipefds[1], STDOUT_FILENO);
+                break;
+            }
+            pipe(pipefds);
+            if (i == 0)
+            {
+                //dup2(pipefds[0], STDIN_FILENO);
+            }
+            else
+            {
+                dup2(pipefds[0], last_cmd_out);
+            }
+            char **cmdargv = parse_cmdline(commands[i]);
+            pid_t pid = fork();
+            if (pid < 0)
+            {
+                perror("fork");
+            }
+            else if (pid == 0)
+            {
+                if (execvp(cmdargv[0], cmdargv) < 0)
+                {
+                    perror(cmdargv[0]);
+                    free(cmdargv);
+                    free(cmdargv[0]);
+                    free(line);
+                    exit(-1);
+                }
+            }
+            else
+            {
+                int status;
+                waitpid(pid, &status, 0);
+                if (status)
+                {
+                    //?
+                }
+            }
+            //printf("%p %p %p", cmdargv, cmdargv[0], line);
+            free(cmdargv);
+            free(cmdargv[0]);
+        }
+        free(commands);
+        free(line);
+        len = 0;
+    }
+    return 0;
+}

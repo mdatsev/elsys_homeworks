@@ -1,0 +1,60 @@
+tail: cannot open 'nope' for reading: No such file or directory
+==> /tmp/ <==
+tail: error reading '/tmp/': Is a directory
+tail: cannot open 'asdfasd' for reading: No such file or directory
+tail: cannot open 'ft1' for reading: No such file or directory
+tail: cannot open 't2' for reading: No such file or directory
+tail: cannot open 't3' for reading: No such file or directory
+tail: cannot open 't4' for reading: No such file or directory
+tail: cannot open 't5' for reading: No such file or directory
+tail: cannot open 't6' for reading: No such file or directory
+tail: cannot open 't7' for reading: No such file or directory
+tail: cannot open 't8' for reading: No such file or directory
+tail: cannot open 't9' for reading: No such file or directory
+tail: cannot open 't10' for reading: No such file or directory
+tail: cannot open 't11' for reading: No such file or directory
+tail: cannot open 't12' for reading: No such file or directory
+tail: cannot open 't13' for reading: No such file or directory
+
+==> /tmp/ <==
+tail: error reading '/tmp/': Is a directory
+
+==> /dev/null <==
+
+==> / <==
+tail: error reading '/': Is a directory
+tail: cannot open 't2' for reading: No such file or directory
+tail: cannot open 'tw' for reading: No such file or directory
+tail: cannot open 'teyr' for reading: No such file or directory
+tail: cannot open 'tweui' for reading: No such file or directory
+tail: cannot open 'rewourtt2t23t' for reading: No such file or directory
+tail: cannot open 't3e5t34t545t638t' for reading: No such file or directory
+tail: cannot open '238t32t' for reading: No such file or directory
+tail: cannot open '38t3' for reading: No such file or directory
+tail: cannot open 'tt' for reading: No such file or directory
+tail: cannot open 't47t' for reading: No such file or directory
+tail: cannot open '47t' for reading: No such file or directory
+tail: cannot open '47t' for reading: No such file or directory
+tail: cannot open '722t46t' for reading: No such file or directory
+tail: cannot open 't64t2y' for reading: No such file or directory
+tail: cannot open '8t28t' for reading: No such file or directory
+tail: cannot open '7tt73' for reading: No such file or directory
+tail: cannot open 'tt' for reading: No such file or directory
+tail: cannot open 't73' for reading: No such file or directory
+tail: cannot open 't7t' for reading: No such file or directory
+tail: cannot open '2ytt' for reading: No such file or directory
+tail: cannot open '82' for reading: No such file or directory
+tail: cannot open 't8' for reading: No such file or directory
+tail: cannot open 't83' for reading: No such file or directory
+tail: cannot open 'tt' for reading: No such file or directory
+tail: cannot open '83t' for reading: No such file or directory
+tail: cannot open '37t7' for reading: No such file or directory
+tail: cannot open '3t' for reading: No such file or directory
+tail: cannot open '37t' for reading: No such file or directory
+tail: cannot open '37t74' for reading: No such file or directory
+tail: cannot open '2t8732tr32874t23784' for reading: No such file or directory
+tail: cannot open 't32t328' for reading: No such file or directory
+tail: cannot open 't3287t4' for reading: No such file or directory
+tail: cannot open '287te' for reading: No such file or directory
+tail: cannot open '3827t23t4' for reading: No such file or directory
+tail: cannot open '23847' for reading: No such file or directory

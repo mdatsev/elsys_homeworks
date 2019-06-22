@@ -1,0 +1,21 @@
+<% if notice %>
+<div class="alert alert-primary" role="alert">
+  <%= notice %>
+</div>
+<% end %>
+<div class="px-2 py-4">
+<div class="media">
+	<div class="media-img pr-4 pt-3">
+	<%= image_tag @article.picture, class:"mr-3 img-thumbnail border-success" %>
+	</div>
+  <div class="media-body">
+    <h5 class="mt-0"><%= @article.title %></h5>
+    <%= @article.body %>
+  </div>
+ <p> Ordered Fist: <%= @article.ordered_first%> </p>
+</div>
+
+<%= link_to 'Edit', edit_article_path(@article), class: "btn btn-primary btn-sm" %>
+<%= link_to 'Back', articles_path, class: "btn btn-primary" %>
+<button type="button" class="btn btn-lg btn-danger" disabled>DESTROY THE WORLD button</button>
+</div>

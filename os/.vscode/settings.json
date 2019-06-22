@@ -1,0 +1,24 @@
+{
+    "files.associations": {
+        "types.h": "c",
+        "int-ll64.h": "c",
+        "bitsperlong.h": "c",
+        "fcntl.h": "c",
+        "stat.h": "c",
+        "stdlib.h": "c",
+        "unistd.h": "c",
+        "stdio.h": "c",
+        "wait.h": "c",
+        "string.h": "c",
+        "wordsize.h": "c",
+        "stdarg.h": "c",
+        "pthread.h": "c",
+        "stdbool.h": "c",
+        "thread": "c",
+        "array": "c",
+        "dirent.h": "c",
+        "features.h": "c",
+        "pwd.h": "c",
+        "getopt.h": "c"
+    }
+}

@@ -1,0 +1,27 @@
+<%= form_with(model: cinema_film_connection, local: true) do |form| %>
+  <% if cinema_film_connection.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(cinema_film_connection.errors.count, "error") %> prohibited this cinema_film_connection from being saved:</h2>
+
+      <ul>
+      <% cinema_film_connection.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :cinema_id %>
+    <%= form.number_field :cinema_id, id: :cinema_film_connection_cinema_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :film_id %>
+    <%= form.number_field :film_id, id: :cinema_film_connection_film_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

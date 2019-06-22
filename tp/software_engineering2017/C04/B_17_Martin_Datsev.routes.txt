@@ -1,0 +1,16 @@
+Method URL                               ctrlr action     comment
+GET    /rsas                             rsas#show        returns all RSA objects
+POST   /rsas?n&e&d                       rsas#create      create new RSA with n, e, d given as params (rsa.initialize)
+GET    /rsas/new_keys                    rsas#new_key     returns all new n, e, d (RSA.new_key)
+GET    /rsas/:rid/edit?n&e&d             rsas#edit        edit the rsa with id :rid with n, e, d given as params
+GET    /rsas/:rid                        rsas#show?values returns n, e or d of rsa with id :rid (rsa.n, rsa.e, rsa.d)
+
+POST   /rsas/:rid/enc_messages?message   rsas#encrypt     request message encryption message by encrypting the param with the rsa with id :rid (rsa.encrypt)
+GET    /rsas/:rid/enc_messages/:eid      rsas#encrypt     returns encrypted message with id :eid (rsa.encrypt)
+DELETE /rsas/:rid/enc_messages/:eid      rsas#encrypt     deletes encrypted message with id :eid
+
+POST   /rsas/:rid/dec_messages?message   rsas#decrypt     request message decryption message by decrypting the param with the rsa with id :rid (rsa.encrypt)
+GET    /rsas/:rid/dec_messages/:did      rsas#decrypt     returns decrypted message with id d:rid (rsa.decrypt)
+DELETE /rsas/:rid/dec_messages/:eid      rsas#encrypt     deletes decrypted message with id :eid
+
+DELETE /rsas/:rid                        rsas#destroy     destroys rsa with id :ridr

@@ -1,0 +1,2 @@
+class ThreadObj < ApplicationRecord
+end

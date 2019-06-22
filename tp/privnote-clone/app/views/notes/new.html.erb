@@ -1,0 +1,17 @@
+<% content_for :title, "Create a note" %>
+
+<%= form_for @note, url: notes_path do |f| %>
+<div class="form-group">
+    <%= f.label :content, "Write a note:" %>
+    <%= f.text_area :content, class: "form-control"%>
+</div>
+<div class="form-group">
+    <%= f.label :email, "Callback email:" %>
+    <%= f.email_field :email, class: "form-control"%>
+</div>
+<div class="form-group">
+    <%= f.label :email, "Note passowrd:" %>
+    <%= f.password_field :password, class: "form-control"%>
+</div>
+<button type="submit" class="btn btn-primary">Submit</button>
+<%end%>

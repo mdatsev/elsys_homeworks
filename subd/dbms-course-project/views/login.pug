@@ -1,0 +1,17 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    link(rel='stylesheet', href='/regstyle.css')
+  body
+    form(action='login', method='post')
+      h2 Log In
+      p
+        label.floatLabel(for='Username') Username
+        input#username(name='username', type='text')
+      p
+        label.floatLabel(for='password') Password
+        input#password(name='password', type='password')
+      p
+        input#submit(type='submit', value='Log in!')
+    script(src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js')

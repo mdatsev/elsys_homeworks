@@ -1,0 +1,27 @@
+<%= form_with(model: thread_object, local: true) do |form| %>
+  <% if thread_object.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(thread_object.errors.count, "error") %> prohibited this thread_object from being saved:</h2>
+
+      <ul>
+      <% thread_object.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :id %>
+    <%= form.number_field :id, id: :thread_object_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :value %>
+    <%= form.number_field :value, id: :thread_object_value %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

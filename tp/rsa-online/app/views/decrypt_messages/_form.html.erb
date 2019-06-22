@@ -1,0 +1,21 @@
+<%= form_for([@decrypt_message.rsa, @decrypt_message]) do |f| %>
+  <% if @decrypt_message.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@decrypt_message.errors.count, "error") %> prohibited this decrypt_message from being saved:</h2>
+
+      <ul>
+      <% @decrypt_message.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :message %><br />
+    <%= f.text_field :message %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

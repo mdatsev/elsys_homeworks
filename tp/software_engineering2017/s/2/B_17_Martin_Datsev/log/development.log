@@ -1,0 +1,687 @@
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (61.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (65.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20180418102417)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180418102417"]]
+  [1m[35m (79.1ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateSubscriptions (20180418102433)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "subscriptions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "price" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180418102433"]]
+  [1m[35m (72.2ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateUserSubscriptions (20180418103745)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "user_subscriptions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "subscription_id" integer, "role" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180418103745"]]
+  [1m[35m (71.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2018-04-18 10:39:00.352560"], ["updated_at", "2018-04-18 10:39:00.352560"]]
+  [1m[35m (43.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/users" for 127.0.0.1 at 2018-04-18 13:39:17 +0300
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  Rendered users/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 960ms (Views: 947.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2018-04-18 13:39:19 +0300
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (16.0ms)
+  Rendered users/new.html.erb within layouts/application (17.3ms)
+Completed 200 OK in 68ms (Views: 60.7ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2018-04-18 13:39:22 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ziGsVzXnYAnfmht5fkTD2RtXAINlCmnGHGG+we70o1XBsKcAeOY+33GpT/CoZ16FhRH7IzGDLfzJMxzoUBG+5w==", "user"=>{"name"=>"Gosho"}, "commit"=>"Create User"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "users" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Gosho"], ["created_at", "2018-04-18 10:39:22.636509"], ["updated_at", "2018-04-18 10:39:22.636509"]]
+  [1m[35m (87.8ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 96ms (ActiveRecord: 88.9ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2018-04-18 13:39:22 +0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 59ms (Views: 52.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2018-04-18 13:39:23 +0300
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  Rendered users/index.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 39ms (Views: 36.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2018-04-18 13:39:26 +0300
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (2.0ms)
+  Rendered users/new.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 29ms (Views: 28.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2018-04-18 13:39:28 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"AIVprDqDDszKua+ju8lzxI2SlhNrFyqEuFpybKe8AlcPFGL7d4JQGmSK+ypt6u6YE9Rtsz+ebr5tCNBFGVkf5Q==", "user"=>{"name"=>"ivan"}, "commit"=>"Create User"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "ivan"], ["created_at", "2018-04-18 10:39:28.181962"], ["updated_at", "2018-04-18 10:39:28.181962"]]
+  [1m[35m (117.5ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/users/2
+Completed 302 Found in 122ms (ActiveRecord: 117.9ms)
+
+
+Started GET "/users/2" for 127.0.0.1 at 2018-04-18 13:39:28 +0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 27ms (Views: 25.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/usbscriptions" for 127.0.0.1 at 2018-04-18 13:39:32 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/usbscriptions"):
+  
+actionpack (5.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.6.0) lib/web_console/middleware.rb:137:in `call_app'
+web-console (3.6.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.4) lib/rack/method_override.rb:22:in `call'
+rack (2.0.4) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.4) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6) lib/rails/engine.rb:522:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/susbscriptions" for 127.0.0.1 at 2018-04-18 13:39:35 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/susbscriptions"):
+  
+actionpack (5.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.6.0) lib/web_console/middleware.rb:137:in `call_app'
+web-console (3.6.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.4) lib/rack/method_override.rb:22:in `call'
+rack (2.0.4) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.4) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6) lib/rails/engine.rb:522:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/subscriptions" for 127.0.0.1 at 2018-04-18 13:39:37 +0300
+Processing by SubscriptionsController#index as HTML
+  Rendering subscriptions/index.html.erb within layouts/application
+  [1m[36mSubscription Load (0.2ms)[0m  [1m[34mSELECT "subscriptions".* FROM "subscriptions"[0m
+  Rendered subscriptions/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 29ms (Views: 23.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/subscriptions/new" for 127.0.0.1 at 2018-04-18 13:39:39 +0300
+Processing by SubscriptionsController#new as HTML
+  Rendering subscriptions/new.html.erb within layouts/application
+  Rendered subscriptions/_form.html.erb (5.3ms)
+  Rendered subscriptions/new.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 43ms (Views: 35.4ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/subscriptions" for 127.0.0.1 at 2018-04-18 13:39:42 +0300
+Processing by SubscriptionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"THsTM1G51xeRSnVfkoUt3IVZNtKr+26IHcLJ2cl0+JVylPQPtHQ0MmXSOkf7785hQd5+zDZkCxJ6o1XvVaG7cQ==", "subscription"=>{"price"=>"11"}, "commit"=>"Create Subscription"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "subscriptions" ("price", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["price", 11], ["created_at", "2018-04-18 10:39:42.793792"], ["updated_at", "2018-04-18 10:39:42.793792"]]
+  [1m[35m (45.9ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/subscriptions/1
+Completed 302 Found in 51ms (ActiveRecord: 46.2ms)
+
+
+Started GET "/subscriptions/1" for 127.0.0.1 at 2018-04-18 13:39:42 +0300
+Processing by SubscriptionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSubscription Load (0.3ms)[0m  [1m[34mSELECT  "subscriptions".* FROM "subscriptions" WHERE "subscriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering subscriptions/show.html.erb within layouts/application
+  Rendered subscriptions/show.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 33ms (Views: 30.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/user_subscribtions" for 127.0.0.1 at 2018-04-18 13:39:48 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/user_subscribtions"):
+  
+actionpack (5.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.6.0) lib/web_console/middleware.rb:137:in `call_app'
+web-console (3.6.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.4) lib/rack/method_override.rb:22:in `call'
+rack (2.0.4) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.4) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6) lib/rails/engine.rb:522:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/user_subscriptions" for 127.0.0.1 at 2018-04-18 13:40:09 +0300
+Processing by UserSubscriptionsController#index as HTML
+  Rendering user_subscriptions/index.html.erb within layouts/application
+  [1m[36mUserSubscription Load (0.2ms)[0m  [1m[34mSELECT "user_subscriptions".* FROM "user_subscriptions"[0m
+  Rendered user_subscriptions/index.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 40ms (Views: 22.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/user_subscriptions/new" for 127.0.0.1 at 2018-04-18 13:40:10 +0300
+Processing by UserSubscriptionsController#new as HTML
+  Rendering user_subscriptions/new.html.erb within layouts/application
+  Rendered user_subscriptions/_form.html.erb (3.0ms)
+  Rendered user_subscriptions/new.html.erb within layouts/application (4.1ms)
+Completed 200 OK in 38ms (Views: 29.8ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/user_subscriptions" for 127.0.0.1 at 2018-04-18 13:40:16 +0300
+Processing by UserSubscriptionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"O+i1f6ZfcS//y6kFVlWAFhsCpq+vAdBwDpgQXlQ3HIqoY2kvTHgq/+obQ/+EdOWvMDo9zLMbteUrRGFAsWdD2w==", "user_subscription"=>{"user_id"=>"3", "subscription_id"=>"1", "role"=>"1"}, "commit"=>"Create User subscription"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mSubscription Load (0.1ms)[0m  [1m[34mSELECT  "subscriptions".* FROM "subscriptions" WHERE "subscriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUserSubscription Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "user_subscriptions" WHERE "user_subscriptions"."user_id" = ? AND "user_subscriptions"."subscription_id" = ? LIMIT ?[0m  [["user_id", 3], ["subscription_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  Rendering user_subscriptions/new.html.erb within layouts/application
+  Rendered user_subscriptions/_form.html.erb (3.9ms)
+  Rendered user_subscriptions/new.html.erb within layouts/application (5.1ms)
+Completed 200 OK in 59ms (Views: 25.7ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/user_subscriptions" for 127.0.0.1 at 2018-04-18 13:40:21 +0300
+Processing by UserSubscriptionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"4EDM4bJop6x0yEwfV/5yMXV/sgHbXtsw5xnbsbD0BXeP+m6C6P+1tidqQDPtfKdVhF44ig1TaqtbyRQBZdq6eg==", "user_subscription"=>{"user_id"=>"1", "subscription_id"=>"1", "role"=>"1"}, "commit"=>"Create User subscription"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSubscription Load (0.1ms)[0m  [1m[34mSELECT  "subscriptions".* FROM "subscriptions" WHERE "subscriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUserSubscription Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "user_subscriptions" WHERE "user_subscriptions"."user_id" = ? AND "user_subscriptions"."subscription_id" = ? LIMIT ?[0m  [["user_id", 1], ["subscription_id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "user_subscriptions" ("user_id", "subscription_id", "role", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["user_id", 1], ["subscription_id", 1], ["role", 1], ["created_at", "2018-04-18 10:40:21.978240"], ["updated_at", "2018-04-18 10:40:21.978240"]]
+  [1m[35m (73.3ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/user_subscriptions/1
+Completed 302 Found in 81ms (ActiveRecord: 74.0ms)
+
+
+Started GET "/user_subscriptions/1" for 127.0.0.1 at 2018-04-18 13:40:22 +0300
+Processing by UserSubscriptionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUserSubscription Load (0.2ms)[0m  [1m[34mSELECT  "user_subscriptions".* FROM "user_subscriptions" WHERE "user_subscriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering user_subscriptions/show.html.erb within layouts/application
+  Rendered user_subscriptions/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 24ms (Views: 22.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/user_subscriptions" for 127.0.0.1 at 2018-04-18 13:40:23 +0300
+Processing by UserSubscriptionsController#index as HTML
+  Rendering user_subscriptions/index.html.erb within layouts/application
+  [1m[36mUserSubscription Load (0.2ms)[0m  [1m[34mSELECT "user_subscriptions".* FROM "user_subscriptions"[0m
+  Rendered user_subscriptions/index.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 23ms (Views: 21.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/user_subscriptions/new" for 127.0.0.1 at 2018-04-18 13:40:25 +0300
+Processing by UserSubscriptionsController#new as HTML
+  Rendering user_subscriptions/new.html.erb within layouts/application
+  Rendered user_subscriptions/_form.html.erb (3.8ms)
+  Rendered user_subscriptions/new.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 38ms (Views: 36.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/user_subscriptions" for 127.0.0.1 at 2018-04-18 13:40:31 +0300
+Processing by UserSubscriptionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"1E6lAaCsSf3AmBSxoMuzuTflEnn2ZLk8rzrGwu6auHtHxXlRSosSLdVI/kty6tYAHN2JGup+3KmK5rfcC8rnKg==", "user_subscription"=>{"user_id"=>"1", "subscription_id"=>"1", "role"=>"2"}, "commit"=>"Create User subscription"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSubscription Load (0.1ms)[0m  [1m[34mSELECT  "subscriptions".* FROM "subscriptions" WHERE "subscriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUserSubscription Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "user_subscriptions" WHERE "user_subscriptions"."user_id" = ? AND "user_subscriptions"."subscription_id" = ? LIMIT ?[0m  [["user_id", 1], ["subscription_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  Rendering user_subscriptions/new.html.erb within layouts/application
+  Rendered user_subscriptions/_form.html.erb (4.9ms)
+  Rendered user_subscriptions/new.html.erb within layouts/application (6.5ms)
+Completed 200 OK in 34ms (Views: 26.8ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/user_subscriptions" for 127.0.0.1 at 2018-04-18 13:40:37 +0300
+Processing by UserSubscriptionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"AkPzlgTw5Hm3cs1/paSy4F8sJpdCEHaBJc89f6wXOz9t+VH1Xmf2Y+TQwVMfJmeErg2sHJQdxxqZH/LPeTmEMg==", "user_subscription"=>{"user_id"=>"2", "subscription_id"=>"1", "role"=>"2"}, "commit"=>"Create User subscription"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mSubscription Load (0.1ms)[0m  [1m[34mSELECT  "subscriptions".* FROM "subscriptions" WHERE "subscriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUserSubscription Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "user_subscriptions" WHERE "user_subscriptions"."user_id" = ? AND "user_subscriptions"."subscription_id" = ? LIMIT ?[0m  [["user_id", 2], ["subscription_id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (2.3ms)[0m  [1m[32mINSERT INTO "user_subscriptions" ("user_id", "subscription_id", "role", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["user_id", 2], ["subscription_id", 1], ["role", 2], ["created_at", "2018-04-18 10:40:37.705533"], ["updated_at", "2018-04-18 10:40:37.705533"]]
+  [1m[35m (67.1ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/user_subscriptions/2
+Completed 302 Found in 85ms (ActiveRecord: 69.8ms)
+
+
+Started GET "/user_subscriptions/2" for 127.0.0.1 at 2018-04-18 13:40:37 +0300
+Processing by UserSubscriptionsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUserSubscription Load (0.1ms)[0m  [1m[34mSELECT  "user_subscriptions".* FROM "user_subscriptions" WHERE "user_subscriptions"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering user_subscriptions/show.html.erb within layouts/application
+  Rendered user_subscriptions/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 24ms (Views: 22.4ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/user_subscriptions" for 127.0.0.1 at 2018-04-18 13:40:38 +0300
+Processing by UserSubscriptionsController#index as HTML
+  Rendering user_subscriptions/index.html.erb within layouts/application
+  [1m[36mUserSubscription Load (0.2ms)[0m  [1m[34mSELECT "user_subscriptions".* FROM "user_subscriptions"[0m
+  Rendered user_subscriptions/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 26ms (Views: 24.4ms | ActiveRecord: 0.2ms)
+
+
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUserSubscriptions (20180418103745)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.4ms)[0m  [1m[35mDROP TABLE "user_subscriptions"[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = ?[0m  [["version", "20180418103745"]]
+  [1m[35m (51.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/user_subscriptions" for 127.0.0.1 at 2018-04-18 13:48:43 +0300
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+):
+  
+activerecord (5.1.6) lib/active_record/migration.rb:576:in `check_pending!'
+activerecord (5.1.6) lib/active_record/migration.rb:553:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.6) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.6) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+web-console (3.6.0) lib/web_console/middleware.rb:137:in `call_app'
+web-console (3.6.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.4) lib/rack/method_override.rb:22:in `call'
+rack (2.0.4) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.4) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6) lib/rails/engine.rb:522:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUserSubscriptions (20180418103745)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE TABLE "user_subscriptions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "subscription_id" integer, "role" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_user_id_on_subscription_id" ON "user_id" ("subscription_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUserSubscriptions (20180418103745)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE TABLE "user_subscriptions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "subscription_id" integer, "role" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUserSubscriptions (20180418103745)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE "user_subscriptions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "subscription_id" integer, "role" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_user_subscriptions_on_user_id_and_subscription_id" ON "user_subscriptions" ("user_id", "subscription_id")[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180418103745"]]
+  [1m[35m (187.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_user_subscriptions_on_user_id_and_subscription_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_user_subscriptions_on_user_id_and_subscription_id' AND type='index'
+[0m
+Started GET "/user_subscriptions" for 127.0.0.1 at 2018-04-18 13:51:00 +0300
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UserSubscriptionsController#index as HTML
+  Rendering user_subscriptions/index.html.erb within layouts/application
+  [1m[36mUserSubscription Load (0.3ms)[0m  [1m[34mSELECT "user_subscriptions".* FROM "user_subscriptions"[0m
+  Rendered user_subscriptions/index.html.erb within layouts/application (6.4ms)
+Completed 200 OK in 268ms (Views: 254.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/user_subscriptions/new" for 127.0.0.1 at 2018-04-18 13:51:02 +0300
+Processing by UserSubscriptionsController#new as HTML
+  Rendering user_subscriptions/new.html.erb within layouts/application
+  Rendered user_subscriptions/_form.html.erb (13.9ms)
+  Rendered user_subscriptions/new.html.erb within layouts/application (15.1ms)
+Completed 200 OK in 53ms (Views: 40.0ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/user_subscriptions" for 127.0.0.1 at 2018-04-18 13:51:05 +0300
+Processing by UserSubscriptionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ynsqZX+li4M7H82VLTf1C74eeyaJr2ksummW+7C3V7VZ8PY1lYLQUy7PJ2//FpCylSbgRZW1DLmfteflVecI5A==", "user_subscription"=>{"user_id"=>"1", "subscription_id"=>"1", "role"=>"1"}, "commit"=>"Create User subscription"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSubscription Load (0.1ms)[0m  [1m[34mSELECT  "subscriptions".* FROM "subscriptions" WHERE "subscriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (2.5ms)[0m  [1m[32mINSERT INTO "user_subscriptions" ("user_id", "subscription_id", "role", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["user_id", 1], ["subscription_id", 1], ["role", 1], ["created_at", "2018-04-18 10:51:06.024485"], ["updated_at", "2018-04-18 10:51:06.024485"]]
+  [1m[35m (48.5ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/user_subscriptions/1
+Completed 302 Found in 126ms (ActiveRecord: 52.4ms)
+
+
+Started GET "/user_subscriptions/1" for 127.0.0.1 at 2018-04-18 13:51:06 +0300
+Processing by UserSubscriptionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUserSubscription Load (1.1ms)[0m  [1m[34mSELECT  "user_subscriptions".* FROM "user_subscriptions" WHERE "user_subscriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering user_subscriptions/show.html.erb within layouts/application
+  Rendered user_subscriptions/show.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 46ms (Views: 42.0ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/user_subscriptions" for 127.0.0.1 at 2018-04-18 13:51:07 +0300
+Processing by UserSubscriptionsController#index as HTML
+  Rendering user_subscriptions/index.html.erb within layouts/application
+  [1m[36mUserSubscription Load (0.2ms)[0m  [1m[34mSELECT "user_subscriptions".* FROM "user_subscriptions"[0m
+  Rendered user_subscriptions/index.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 35ms (Views: 32.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/user_subscriptions/new" for 127.0.0.1 at 2018-04-18 13:51:08 +0300
+Processing by UserSubscriptionsController#new as HTML
+  Rendering user_subscriptions/new.html.erb within layouts/application
+  Rendered user_subscriptions/_form.html.erb (3.9ms)
+  Rendered user_subscriptions/new.html.erb within layouts/application (5.2ms)
+Completed 200 OK in 30ms (Views: 29.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/user_subscriptions" for 127.0.0.1 at 2018-04-18 13:51:11 +0300
+Processing by UserSubscriptionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"xLIzAdYDGhI5FGX7min0Ho+2aWyPz5AcKY7tU2fonkxXOe9RPCRBwizEjwFICJGnpI7yD5PV9YkMUpxNgrjBHQ==", "user_subscription"=>{"user_id"=>"1", "subscription_id"=>"1", "role"=>"1"}, "commit"=>"Create User subscription"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSubscription Load (0.2ms)[0m  [1m[34mSELECT  "subscriptions".* FROM "subscriptions" WHERE "subscriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "user_subscriptions" ("user_id", "subscription_id", "role", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["user_id", 1], ["subscription_id", 1], ["role", 1], ["created_at", "2018-04-18 10:51:11.843478"], ["updated_at", "2018-04-18 10:51:11.843478"]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 1.5ms)
+
+
+  
+ActiveRecord::RecordNotUnique (SQLite3::ConstraintException: UNIQUE constraint failed: user_subscriptions.user_id, user_subscriptions.subscription_id: INSERT INTO "user_subscriptions" ("user_id", "subscription_id", "role", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)):
+  
+app/controllers/user_subscriptions_controller.rb:30:in `block in create'
+app/controllers/user_subscriptions_controller.rb:29:in `create'
+Started POST "/user_subscriptions" for 127.0.0.1 at 2018-04-18 13:51:32 +0300
+Processing by UserSubscriptionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"xLIzAdYDGhI5FGX7min0Ho+2aWyPz5AcKY7tU2fonkxXOe9RPCRBwizEjwFICJGnpI7yD5PV9YkMUpxNgrjBHQ==", "user_subscription"=>{"user_id"=>"2", "subscription_id"=>"1", "role"=>"1"}, "commit"=>"Create User subscription"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mSubscription Load (0.1ms)[0m  [1m[34mSELECT  "subscriptions".* FROM "subscriptions" WHERE "subscriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "user_subscriptions" ("user_id", "subscription_id", "role", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["user_id", 2], ["subscription_id", 1], ["role", 1], ["created_at", "2018-04-18 10:51:32.626281"], ["updated_at", "2018-04-18 10:51:32.626281"]]
+  [1m[35m (54.7ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/user_subscriptions/2
+Completed 302 Found in 62ms (ActiveRecord: 55.3ms)
+
+
+Started GET "/user_subscriptions/2" for 127.0.0.1 at 2018-04-18 13:51:32 +0300
+Processing by UserSubscriptionsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUserSubscription Load (0.2ms)[0m  [1m[34mSELECT  "user_subscriptions".* FROM "user_subscriptions" WHERE "user_subscriptions"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering user_subscriptions/show.html.erb within layouts/application
+  Rendered user_subscriptions/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 26ms (Views: 24.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/user_subscriptions" for 127.0.0.1 at 2018-04-18 13:51:34 +0300
+Processing by UserSubscriptionsController#index as HTML
+  Rendering user_subscriptions/index.html.erb within layouts/application
+  [1m[36mUserSubscription Load (0.2ms)[0m  [1m[34mSELECT "user_subscriptions".* FROM "user_subscriptions"[0m
+  Rendered user_subscriptions/index.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 23ms (Views: 21.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/user_subscriptions" for 127.0.0.1 at 2018-04-18 14:01:26 +0300
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UserSubscriptionsController#index as HTML
+  Rendering user_subscriptions/index.html.erb within layouts/application
+  [1m[36mUserSubscription Load (0.2ms)[0m  [1m[34mSELECT "user_subscriptions".* FROM "user_subscriptions"[0m
+  Rendered user_subscriptions/index.html.erb within layouts/application (13.9ms)
+Completed 200 OK in 231ms (Views: 218.1ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/user_subscriptions/new" for 127.0.0.1 at 2018-04-18 14:01:27 +0300
+Processing by UserSubscriptionsController#new as HTML
+  Rendering user_subscriptions/new.html.erb within layouts/application
+  Rendered user_subscriptions/_form.html.erb (15.0ms)
+  Rendered user_subscriptions/new.html.erb within layouts/application (16.4ms)
+Completed 200 OK in 43ms (Views: 41.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/user_subscriptions" for 127.0.0.1 at 2018-04-18 14:01:30 +0300
+Processing by UserSubscriptionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Vybr1+dMXm4bWUiaaiovvAiW02PkbKUpAa/+FSVMec/ErTeHDWsFvg6JomC4C0oFI65IAPh2wLwkc48LwBwmng==", "user_subscription"=>{"user_id"=>"1", "subscription_id"=>"1", "role"=>"1"}, "commit"=>"Create User subscription"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSubscription Load (0.2ms)[0m  [1m[34mSELECT  "subscriptions".* FROM "subscriptions" WHERE "subscriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (1.3ms)[0m  [1m[32mINSERT INTO "user_subscriptions" ("user_id", "subscription_id", "role", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["user_id", 1], ["subscription_id", 1], ["role", 1], ["created_at", "2018-04-18 11:01:30.813567"], ["updated_at", "2018-04-18 11:01:30.813567"]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+Completed 406 Not Acceptable in 79ms (ActiveRecord: 4.3ms)
+
+
+  
+ActionController::UnknownFormat (ActionController::UnknownFormat):
+  
+app/controllers/user_subscriptions_controller.rb:29:in `create'
+Started GET "/user_subscriptions" for 127.0.0.1 at 2018-04-18 14:03:01 +0300
+Processing by UserSubscriptionsController#index as HTML
+  Rendering user_subscriptions/index.html.erb within layouts/application
+  [1m[36mUserSubscription Load (0.1ms)[0m  [1m[34mSELECT "user_subscriptions".* FROM "user_subscriptions"[0m
+  Rendered user_subscriptions/index.html.erb within layouts/application (11.2ms)
+Completed 200 OK in 36ms (Views: 32.3ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/user_subscriptions/new" for 127.0.0.1 at 2018-04-18 14:03:12 +0300
+Processing by UserSubscriptionsController#new as HTML
+  Rendering user_subscriptions/new.html.erb within layouts/application
+  Rendered user_subscriptions/_form.html.erb (2.7ms)
+  Rendered user_subscriptions/new.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 24ms (Views: 23.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/user_subscriptions" for 127.0.0.1 at 2018-04-18 14:03:15 +0300
+Processing by UserSubscriptionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ZCwD7EyMfB2LvW0LTqjH7mYkphdVGtIECh6pAmoWB6X3p9+8pqsnzZ5th/GciaJXTRw9dEkAt5Evwtgcj0ZY9A==", "user_subscription"=>{"user_id"=>"1", "subscription_id"=>"1", "role"=>"1"}, "commit"=>"Create User subscription"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSubscription Load (0.1ms)[0m  [1m[34mSELECT  "subscriptions".* FROM "subscriptions" WHERE "subscriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "user_subscriptions" ("user_id", "subscription_id", "role", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["user_id", 1], ["subscription_id", 1], ["role", 1], ["created_at", "2018-04-18 11:03:15.929127"], ["updated_at", "2018-04-18 11:03:15.929127"]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+Completed 406 Not Acceptable in 29ms (ActiveRecord: 2.1ms)
+
+
+  
+ActionController::UnknownFormat (ActionController::UnknownFormat):
+  
+app/controllers/user_subscriptions_controller.rb:29:in `create'
+Started POST "/user_subscriptions" for 127.0.0.1 at 2018-04-18 14:04:01 +0300
+Processing by UserSubscriptionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ZCwD7EyMfB2LvW0LTqjH7mYkphdVGtIECh6pAmoWB6X3p9+8pqsnzZ5th/GciaJXTRw9dEkAt5Evwtgcj0ZY9A==", "user_subscription"=>{"user_id"=>"1", "subscription_id"=>"1", "role"=>"1"}, "commit"=>"Create User subscription"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSubscription Load (0.1ms)[0m  [1m[34mSELECT  "subscriptions".* FROM "subscriptions" WHERE "subscriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "user_subscriptions" ("user_id", "subscription_id", "role", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["user_id", 1], ["subscription_id", 1], ["role", 1], ["created_at", "2018-04-18 11:04:01.111513"], ["updated_at", "2018-04-18 11:04:01.111513"]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+Completed 500 Internal Server Error in 138ms (ActiveRecord: 3.9ms)
+
+
+  
+NoMethodError (undefined method `put' for #<UserSubscriptionsController:0x007f8e2e56aea0>
+Did you mean?  putc
+               puts):
+  
+app/controllers/user_subscriptions_controller.rb:39:in `rescue in block in create'
+app/controllers/user_subscriptions_controller.rb:30:in `block in create'
+app/controllers/user_subscriptions_controller.rb:29:in `create'
+Started POST "/user_subscriptions" for 127.0.0.1 at 2018-04-18 14:05:00 +0300
+Processing by UserSubscriptionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ZCwD7EyMfB2LvW0LTqjH7mYkphdVGtIECh6pAmoWB6X3p9+8pqsnzZ5th/GciaJXTRw9dEkAt5Evwtgcj0ZY9A==", "user_subscription"=>{"user_id"=>"1", "subscription_id"=>"1", "role"=>"1"}, "commit"=>"Create User subscription"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSubscription Load (0.1ms)[0m  [1m[34mSELECT  "subscriptions".* FROM "subscriptions" WHERE "subscriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "user_subscriptions" ("user_id", "subscription_id", "role", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["user_id", 1], ["subscription_id", 1], ["role", 1], ["created_at", "2018-04-18 11:05:00.533174"], ["updated_at", "2018-04-18 11:05:00.533174"]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  Rendering user_subscriptions/new.html.erb within layouts/application
+  Rendered user_subscriptions/_form.html.erb (3.1ms)
+  Rendered user_subscriptions/new.html.erb within layouts/application (4.4ms)
+Completed 200 OK in 63ms (Views: 24.8ms | ActiveRecord: 3.0ms)
+
+
+Started POST "/user_subscriptions" for 127.0.0.1 at 2018-04-18 14:05:02 +0300
+Processing by UserSubscriptionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"S3AKXm+cjU56bgKiq8erBWcyUDZL4Fk4VR9yE/iGCegkyqg9NQufVCnMDo4RRX5hlhPavZ3t6KPpz72jLai25Q==", "user_subscription"=>{"user_id"=>"1", "subscription_id"=>"1", "role"=>"1"}, "commit"=>"Create User subscription"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSubscription Load (0.1ms)[0m  [1m[34mSELECT  "subscriptions".* FROM "subscriptions" WHERE "subscriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "user_subscriptions" ("user_id", "subscription_id", "role", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["user_id", 1], ["subscription_id", 1], ["role", 1], ["created_at", "2018-04-18 11:05:02.765485"], ["updated_at", "2018-04-18 11:05:02.765485"]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  Rendering user_subscriptions/new.html.erb within layouts/application
+  Rendered user_subscriptions/_form.html.erb (2.6ms)
+  Rendered user_subscriptions/new.html.erb within layouts/application (3.8ms)
+Completed 200 OK in 31ms (Views: 25.4ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/user_subscriptions" for 127.0.0.1 at 2018-04-18 14:05:04 +0300
+Processing by UserSubscriptionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Hawqijs/BtUR4E5iHYaO+uimL8iqAOkicMrmvxQrLFdyFojpYagUz0JCQk6nBFueGYelQ3wNWLnMGikPwQWTWg==", "user_subscription"=>{"user_id"=>"1", "subscription_id"=>"1", "role"=>"1"}, "commit"=>"Create User subscription"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSubscription Load (0.1ms)[0m  [1m[34mSELECT  "subscriptions".* FROM "subscriptions" WHERE "subscriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "user_subscriptions" ("user_id", "subscription_id", "role", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["user_id", 1], ["subscription_id", 1], ["role", 1], ["created_at", "2018-04-18 11:05:04.412721"], ["updated_at", "2018-04-18 11:05:04.412721"]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  Rendering user_subscriptions/new.html.erb within layouts/application
+  Rendered user_subscriptions/_form.html.erb (2.6ms)
+  Rendered user_subscriptions/new.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 27ms (Views: 21.6ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/user_subscriptions" for 127.0.0.1 at 2018-04-18 14:05:05 +0300
+Processing by UserSubscriptionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"3PfcGusGLfCWgilgEQsTR8uvSJtXJ5eezhS33Izdkc2zTX55sZE/6sUgJUyricYjOo7CEIEqJgVyxHhsWfMuwA==", "user_subscription"=>{"user_id"=>"1", "subscription_id"=>"1", "role"=>"1"}, "commit"=>"Create User subscription"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSubscription Load (0.1ms)[0m  [1m[34mSELECT  "subscriptions".* FROM "subscriptions" WHERE "subscriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "user_subscriptions" ("user_id", "subscription_id", "role", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["user_id", 1], ["subscription_id", 1], ["role", 1], ["created_at", "2018-04-18 11:05:05.384392"], ["updated_at", "2018-04-18 11:05:05.384392"]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  Rendering user_subscriptions/new.html.erb within layouts/application
+  Rendered user_subscriptions/_form.html.erb (2.5ms)
+  Rendered user_subscriptions/new.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 34ms (Views: 29.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/user_subscriptions" for 127.0.0.1 at 2018-04-18 14:05:30 +0300
+Processing by UserSubscriptionsController#index as HTML
+  Rendering user_subscriptions/index.html.erb within layouts/application
+  [1m[36mUserSubscription Load (0.1ms)[0m  [1m[34mSELECT "user_subscriptions".* FROM "user_subscriptions"[0m
+  Rendered user_subscriptions/index.html.erb within layouts/application (13.7ms)
+Completed 200 OK in 37ms (Views: 33.0ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/user_subscriptions/new" for 127.0.0.1 at 2018-04-18 14:05:32 +0300
+Processing by UserSubscriptionsController#new as HTML
+  Rendering user_subscriptions/new.html.erb within layouts/application
+  Rendered user_subscriptions/_form.html.erb (2.9ms)
+  Rendered user_subscriptions/new.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 38ms (Views: 36.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/user_subscriptions" for 127.0.0.1 at 2018-04-18 14:05:35 +0300
+Processing by UserSubscriptionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"aawvQOsSAjFyjXy6YccKvDI6K2nzYPZfe+LfWLAifk76J/MQATVZ4WddlkCz5m8FGQKwCu96k8pePq5GVXIhHw==", "user_subscription"=>{"user_id"=>"1", "subscription_id"=>"1", "role"=>"1"}, "commit"=>"Create User subscription"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSubscription Load (0.4ms)[0m  [1m[34mSELECT  "subscriptions".* FROM "subscriptions" WHERE "subscriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "user_subscriptions" ("user_id", "subscription_id", "role", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["user_id", 1], ["subscription_id", 1], ["role", 1], ["created_at", "2018-04-18 11:05:35.071528"], ["updated_at", "2018-04-18 11:05:35.071528"]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  Rendering user_subscriptions/new.html.erb within layouts/application
+  Rendered user_subscriptions/_form.html.erb (3.7ms)
+  Rendered user_subscriptions/new.html.erb within layouts/application (4.9ms)
+Completed 200 OK in 68ms (Views: 28.8ms | ActiveRecord: 2.4ms)
+
+

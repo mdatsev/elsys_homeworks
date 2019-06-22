@@ -1,0 +1,5 @@
+     true        shell     ../other  -la   /   |    echo       -la    file   |  pwd       ../other  -la   ../other  asd   shell     asd   |    ls        /    -la   s     |  echo      shell   -la   |     ls       shell  s  /    file    /  asd     |  true        s   shell  asd  -la   |
+  wc     file      ../other    ../other    ../other  |     asd       -la  s      |   grep          -la   file    file   asd    s     |    echo      shell     -la    /   s  asd     |    false     shell  asd  s  shell   |     false    -la   shell  ../other  ../other     |
+     asd        shell     s    shell     ../other  |     grep        ../other      /    shell    s    |   wc       asd   asd     shell   -la   ../other  shell   shell  -la  |  true       file   ../other    file   s   ../other    -la     shell   |
+  ls        file  file  ../other    asd     -la  |    wc       /   /    file    /    |    cat       shell  s    /    file  |   pwd     asd      s   /   |   asd       shell   ../other      shell   /  file      /    ../other     file   |  cat       /  ../other    file  shell   shell    |
+

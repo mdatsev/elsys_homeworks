@@ -1,0 +1,8 @@
+echo a | echo b | echo c
+ls
+echo b
+ls | grep shell
+ls | grep shell | grep c
+ls -la | wc | wc
+asd
+./shell.c

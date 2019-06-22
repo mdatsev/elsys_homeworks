@@ -1,0 +1,20 @@
+$ total 756
+drwxrwxr-x  2 martin martin   4096 яну  4 23:02 .
+drwxrwxr-x 10 martin martin   4096 яну  4 22:16 ..
+-rw-rw-r--  1 martin martin   1805 яну  4 21:56 1.zip
+-rwxrwxr-x  1 martin martin  28744 яну  4 22:47 a.out
+-rw-rw-r--  1 martin martin      0 яну  4 20:52 file
+-rw-rw-r--  1 martin martin  69814 яну  4 20:54 input
+-rw-rw-r--  1 martin martin  14994 яну  4 20:46 input2
+-rw-rw-r--  1 martin martin     40 дек  5 23:03 makefile
+-rw-rw-r--  1 martin martin      0 дек 15 00:16 my.txt
+-rw-rw-r--  1 martin martin      2 яну  4 23:02 out
+-rw-rw-r--  1 martin martin 588899 яну  3 20:16 output
+-rwxrwxr-x  1 martin martin  14160 яну  4 23:01 shell
+-rw-rw-r--  1 martin martin   5493 яну  4 22:47 shell.c
+-rw-rw-r--  1 martin martin      0 яну  4 21:10 shell-s.c
+-rw-rw-r--  1 martin martin   1440 дек 28 16:53 split.c
+-rw-rw-r--  1 martin martin    618 яну  4 22:45 test.c
+-rw-rw-r--  1 martin martin    515 яну  4 23:02 trace.log
+-rw-rw-r--  1 martin martin   2435 дек 12 12:58 Untitled-1
+$ $ $ 

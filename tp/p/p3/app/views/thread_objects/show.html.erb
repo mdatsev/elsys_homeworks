@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Id:</strong>
+  <%= @thread_object.id %>
+</p>
+
+<p>
+  <strong>Value:</strong>
+  <%= @thread_object.value %>
+</p>
+
+<%= link_to 'Edit', edit_thread_object_path(@thread_object) %> |
+<%= link_to 'Back', thread_objects_path %>

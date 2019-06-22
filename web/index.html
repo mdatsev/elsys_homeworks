@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <!-- HEADER START-->
+    <header id="header">
+        <nav id="nav">
+            <ul>
+                <li>
+                    <a href="#about">About</a>
+                </li>
+                <li>
+                    <a href="#quotes">Quotes</a>
+                </li>
+                <li>
+                    <a href="#gallery">Gallery</a>
+                </li>
+                <li>
+                    <a href="#games">Games</a>
+                </li>
+                <li>
+                    <a href="shop.html">Shop</a>
+                </li>
+                <li>
+                    <a href="contact.html">Contact</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ABOUT -->
+    <div id="about" class="section">
+        <div class="content">
+            <canvas id="about-canvas" class="main-tosko"></canvas>
+        </div>
+    </div>
+    <!-- QUOTES -->
+    <div id="quotes" class="section">
+        <div class="content">
+            <div class="quote main-quote">
+                “Hluzga see! Nqkoi da pomaga! Mangali li ste?!”
+            </div>
+            <div class="quote left-quote">
+                “Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sed leo a turpis malesuada consectetur.”
+            </div>
+            <div class="quote right-quote">
+                “Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam neque eros, mollis sit amet maximus id, imperdiet accumsan
+                justo.”
+            </div>
+        </div>
+    </div>
+    <!-- Gallery -->
+    <div id="gallery" class="section">
+        <div class="content">
+            <img id="gallery-prev" src="left-arrow.jpg">
+            <img id="gallery-image" src="gallery-0.jpg">
+            <iframe gallery-index="1" id="gallery-video" width="560" height="315" src="https://www.youtube.com/embed/oV4q3RCnP0s" frameborder="0"
+                allow="autoplay; encrypted-media" style="opacity:0" allowfullscreen=""></iframe>
+            <img id="gallery-next" src="right-arrow.jpg">
+        </div>
+    </div>
+    <!-- Games -->
+    <div id="games" class="section">
+        <div class="content">
+            <div class="wrapper" id="wrapper">
+                <img class="gamethumb" game="0">
+                <img class="gamethumb" game="1">
+                <img class="gamethumb" game="2">
+                <img class="gamethumb" game="3">
+                <img class="gamethumb" game="4">
+                <img class="gamethumb" game="5">
+            </div>
+        </div>
+        <div id="myModal" class="modal">
+
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <canvas id="game-0-canvas" hidden width="600px" height="600px"></canvas>
+                <canvas id="game-1-canvas" hidden width="600px" height="600px"></canvas>
+                <canvas id="game-2-canvas" hidden width="600px" height="600px"></canvas>
+                <canvas id="game-3-canvas" hidden width="600px" height="600px"></canvas>
+                <canvas id="game-4-canvas" hidden width="600px" height="600px"></canvas>
+            </div>
+        </div>
+        <script src="header.js"></script>
+        <script src="about.js"></script>
+        <script src="quotes.js"></script>
+        <script src="gallery.js"></script>
+        <script src="games.js"></script>
+        <script src="game-0.js"></script>
+        <script src="game-1.js"></script>
+        <script src="game-2.js"></script>
+        <script src="game-3.js"></script>
+        <script src="game-4.js"></script>
+
+</body>
+
+</html>

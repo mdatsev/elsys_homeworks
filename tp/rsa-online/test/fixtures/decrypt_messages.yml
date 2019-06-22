@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  rsa: one
+  message: MyString
+
+two:
+  rsa: two
+  message: MyString

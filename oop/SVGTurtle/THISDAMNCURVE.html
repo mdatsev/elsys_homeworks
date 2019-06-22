@@ -1,0 +1,119 @@
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Gray code</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/p5.js"></script>
+</head>
+
+<body style="margin:0px">
+<script>
+let heading;
+let x;
+let y;
+let logstr='';
+
+function moveto(p) {
+    line(x, y, p.x, p.y);
+    x = p.x;
+    y = p.y;
+}
+
+function polar(angle, distance) {
+    return {
+        x: distance * cos(angle),
+        y: distance * sin(angle)
+    };
+}
+
+function forward(distance) {
+    let tr = polar(heading, distance);
+    return moveto({
+        x: x + tr.x,
+        y: y + tr.y
+    });
+}
+
+function right(angle) {
+    heading -= angle;
+}
+
+function left(angle) {
+    right(-angle);
+}
+
+function setup() {
+    heading = 0;
+    x = windowWidth / 2;
+    y = windowHeight / 2;
+    angleMode(DEGREES);
+    createCanvas(windowWidth, windowHeight);
+    background(0);
+
+    stroke("gray");
+    left(45);
+    
+    serp(4, false);
+    
+}
+
+let big = 35;
+let small = big / Math.sqrt(2);
+
+function serp(ord, half)
+{
+    if(ord == 1)
+    {
+        halfS();
+        if(half) return;
+        turn();
+        halfS();
+    }
+    else 
+    {
+        serp(ord-1, true);
+        connect()
+        serp(ord-1, false);
+        connect()
+        serp(ord-1, half);
+        if(half) return;
+        connect()
+        serp(ord-1, false);
+        connect()
+        serp(ord-1, true);
+    }
+}
+
+function drawSegm()
+{
+    forward(small);  
+    connect();
+    forward(small);
+}
+
+function halfS()
+{
+    drawSegm(); 
+    turn();
+    drawSegm()
+}
+
+function turn()
+{
+    left(90);
+    forward(small);  
+    left(90);         
+}
+
+function connect()
+{
+   right(45);
+   forward(big);
+   right(45);   
+}
+
+function draw() {
+    //stroke("gray");
+    //half(200);
+}
+</script>
+</body>

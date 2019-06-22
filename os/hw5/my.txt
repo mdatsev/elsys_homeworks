@@ -1,0 +1,155 @@
+tail: cannot open 'nope' for reading: No such file or directory
+==> /tmp/ <==
+tail: error reading '/tmp/': Is a directory
+tail: cannot open 'asdfasd' for reading: No such file or directory
+tail: cannot open 'ft1' for reading: No such file or directory
+
+==> t2 <==
+-nineteen;
+-twenty;
+-twentyone;
+-twentytwo;
+-twentythree;
+-twentyfour;
+-twentyfive;
+-predposleden(26) i sled tova tri newline;
+
+
+
+==> t3 <==
+not
+enough
+lines
+==> t4 <==
+
+==> t5 <==
+12345
+==> t6 <==
+not enough and newline
+tail: cannot open 't7' for reading: Permission denied
+
+==> t8 <==
+jYT7p3pXEePQq5hYJvbh
+rHZSsmjH8o3zXtmSmEym
+YfjtnAN7sRlsS8XyXYXj
+oIdjshTMMBo7f2oScpMN
+Z1OgmbxpUDTimPVIjhwc
+0ZHtU0S4fyMy5rk6T3un
+uvWZhCISZs0peCXgiCDh
+V3prkp0w9W3MuEsCubiz
+9nxVojXNIwoqYxuenjox
+bIGUi4Wm51klPsC2eF5U
+==> t9 <==
+
+a
+sdasd
+
+
+asjdgflkjsa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaad
+asdd
+dhgfdgskgdsds
+
+==> t10 <==
+q
+qw
+qwe
+qwer
+wqert
+wqertyu
+qwreqwtyuuuiop
+==> t11 <==
+
+
+
+
+
+
+
+
+
+
+
+==> t12 <==
+
+
+
+
+
+
+
+==> t13 <==
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+==> /tmp/ <==
+tail: error reading '/tmp/': Is a directory
+
+==> /dev/null <==
+
+==> / <==
+tail: error reading '/': Is a directory
+
+==> t2 <==
+-nineteen;
+-twenty;
+-twentyone;
+-twentytwo;
+-twentythree;
+-twentyfour;
+-twentyfive;
+-predposleden(26) i sled tova tri newline;
+
+
+tail: cannot open 'tw' for reading: No such file or directory
+tail: cannot open 'teyr' for reading: No such file or directory
+tail: cannot open 'tweui' for reading: No such file or directory
+tail: cannot open 'rewourtt2t23t' for reading: No such file or directory
+tail: cannot open 't3e5t34t545t638t' for reading: No such file or directory
+tail: cannot open '238t32t' for reading: No such file or directory
+tail: cannot open '38t3' for reading: No such file or directory
+tail: cannot open 'tt' for reading: No such file or directory
+tail: cannot open 't47t' for reading: No such file or directory
+tail: cannot open '47t' for reading: No such file or directory
+tail: cannot open '47t' for reading: No such file or directory
+tail: cannot open '722t46t' for reading: No such file or directory
+tail: cannot open 't64t2y' for reading: No such file or directory
+tail: cannot open '8t28t' for reading: No such file or directory
+tail: cannot open '7tt73' for reading: No such file or directory
+tail: cannot open 'tt' for reading: No such file or directory
+tail: cannot open 't73' for reading: No such file or directory
+tail: cannot open 't7t' for reading: No such file or directory
+tail: cannot open '2ytt' for reading: No such file or directory
+tail: cannot open '82' for reading: No such file or directory
+
+==> t8 <==
+jYT7p3pXEePQq5hYJvbh
+rHZSsmjH8o3zXtmSmEym
+YfjtnAN7sRlsS8XyXYXj
+oIdjshTMMBo7f2oScpMN
+Z1OgmbxpUDTimPVIjhwc
+0ZHtU0S4fyMy5rk6T3un
+uvWZhCISZs0peCXgiCDh
+V3prkp0w9W3MuEsCubiz
+9nxVojXNIwoqYxuenjox
+bIGUi4Wm51klPsC2eF5Utail: cannot open 't83' for reading: No such file or directory
+tail: cannot open 'tt' for reading: No such file or directory
+tail: cannot open '83t' for reading: No such file or directory
+tail: cannot open '37t7' for reading: No such file or directory
+tail: cannot open '3t' for reading: No such file or directory
+tail: cannot open '37t' for reading: No such file or directory
+tail: cannot open '37t74' for reading: No such file or directory
+tail: cannot open '2t8732tr32874t23784' for reading: No such file or directory
+tail: cannot open 't32t328' for reading: No such file or directory
+tail: cannot open 't3287t4' for reading: No such file or directory
+tail: cannot open '287te' for reading: No such file or directory
+tail: cannot open '3827t23t4' for reading: No such file or directory
+tail: cannot open '23847' for reading: No such file or directory

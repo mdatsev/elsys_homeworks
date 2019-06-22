@@ -1,0 +1,53 @@
+<h2>Articles</h2>
+<div class="row">
+  <% @articles.each do |article| %>
+  <% order_class = article.ordered_first ? "order-first" : "" %>
+    <div class="col-xl-6 col-lg-6 col-sm-6 col-12 <%= order_class %> mb-4">
+      <div class="card p-2">
+        <%= link_to article_path(article) do %>
+          <h4><%= article.title %></h4>
+          <% end %>
+          <!-- Button trigger modal -->
+       
+          
+          <div class="modal fade" id="exampleModal<%= article.id %>" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <%= image_tag article.picture, class: "img-thumbnail" %>
+	      <p><%= article.title %></p>	      
+	      <p><%= article.body %></p>
+            </div>
+          </div>
+           <span data-toggle="modal" data-target="#exampleModal<%= article.id %>" class="pb-2">
+            <%= image_tag article.picture, class: "img-thumbnail" %>
+          </span>
+
+        <p> <%= article.body.first(20) %> ...</p>
+      </div>
+	<%= button_to("Set ordered_fist to true", article,
+remote: true,
+params:{
+	article:{
+		ordered_first: true
+	}
+},
+method: :put,
+data: {},
+class: "btn btn-success"
+) %>
+<%= button_to("Set ordered_fist to false", article,
+remote: true,
+params:{
+	article:{
+		ordered_first: false
+	}
+},
+method: :put,
+data: {},
+class: "btn btn-success"
+) %>
+    </div>
+  <% end %>
+</div>
+<br>
+
+<%= link_to 'New Article', new_article_path %>

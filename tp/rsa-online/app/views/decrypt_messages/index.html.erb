@@ -1,0 +1,23 @@
+<h1>Listing decrypt_messages</h1>
+
+<table>
+  <tr>
+    <th>Message</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @decrypt_messages.each do |decrypt_message| %>
+  <tr>
+    <td><%= decrypt_message.message %></td>
+    <td><%= link_to 'Show', [decrypt_message.rsa, decrypt_message] %></td>
+    <td><%= link_to 'Edit', edit_rsa_decrypt_message_path(decrypt_message.rsa, decrypt_message) %></td>
+    <td><%= link_to 'Destroy', [decrypt_message.rsa, decrypt_message], :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Decrypt message', new_rsa_decrypt_message_path(params[:rsa_id]) %>
