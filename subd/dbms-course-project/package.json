@@ -19,10 +19,10 @@
   "dependencies": {
     "bcrypt": "^2.0.1",
     "bignumber.js": "^7.2.1",
-    "body-parser": "^1.18.3",
+    "body-parser": "^1.20.1",
     "cookie-parser": "^1.4.3",
     "core-util-is": "^1.0.2",
-    "express": "^4.16.3",
+    "express": "^4.18.2",
     "inherits": "^2.0.3",
     "isarray": "^2.0.4",
     "mysql": "^2.15.0",
