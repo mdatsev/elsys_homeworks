@@ -22,7 +22,7 @@
     "body-parser": "^1.18.3",
     "cookie-parser": "^1.4.3",
     "core-util-is": "^1.0.2",
-    "express": "^4.16.3",
+    "express": "^4.17.3",
     "inherits": "^2.0.3",
     "isarray": "^2.0.4",
     "mysql": "^2.15.0",
